@@ -6,30 +6,34 @@ struct HomeView: View {
     
     var body: some View {
         NavigationStack {
-            VStack(spacing: 20) {
-                TitleBar()
+            VStack(spacing: 0) { // ✅ Keeps scroll content + button stacked vertically
+                ScrollView {
+                    VStack(spacing: 20) {
+                        TitleBar()
 
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Entertainment Videos")
-                        .font(.headline)
-                        .padding(.leading)
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("Entertainment Videos")
+                                .font(.headline)
+                                .padding(.leading)
 
-                    if let url1 = viewModel.videoID {
-                        YouTubePlayerView(videoID: url1)
-                            .frame(height: 200)
+                            if let url1 = viewModel.videoID {
+                                YouTubePlayerView(videoID: url1)
+                                    .frame(height: 200)
+                            }
+
+                            if let url = viewModel2.postURL {
+                                InstagramWebView(urlString: url)
+                                    .frame(height: 300)
+                            } else {
+                                Text("Loading Instagram post...")
+                            }
+                        }
+                        .padding(.horizontal)
                     }
-
-                    if let url = viewModel2.postURL {
-                        InstagramWebView(urlString: url)
-                            .frame(height: 300)
-                    } else {
-                        Text("Loading Instagram post...")
-                    }
+                    .padding(.top, 12)
                 }
 
-             
-                
-                // ✅ Navigation button to BookingView at the bottom
+                // ✅ Button stays outside scroll view
                 NavigationLink(destination: BookingView()) {
                     Text("Book an Experience")
                         .font(.headline)
@@ -39,11 +43,12 @@ struct HomeView: View {
                         .background(Color.blue)
                         .cornerRadius(10)
                         .padding(.horizontal)
+                        .padding(.vertical, 8)
                 }
+                .background(Color(UIColor.systemBackground))
             }
             .onAppear {
                 viewModel.fetchVideoID()
-                
                 viewModel2.fetchPostURL()
             }
         }
