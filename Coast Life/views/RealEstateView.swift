@@ -99,7 +99,11 @@ struct RealEstateView: View {
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
                 .padding(.vertical, 8)
-
+            Text("Buy or sell your next property. Use this map to view existing listings.")
+                
+                .multilineTextAlignment(.center)
+                .padding(.horizontal)
+                .padding(.vertical, 8)
             if web.progress < 1.0 {
                 ProgressView(value: web.progress)
                     .progressViewStyle(.linear)

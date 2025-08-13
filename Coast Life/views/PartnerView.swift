@@ -8,7 +8,10 @@ struct PartnerView: View {
             VStack(spacing: 20) {
                 TitleBar()
                 Text("Join The Coast Life Brand")
-                    .font(.headline)
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
                 VStack(spacing: 16) {
                     Text("""
                     Coast Life offers management, branding, recreational operations, and entertainment facility partnerships!

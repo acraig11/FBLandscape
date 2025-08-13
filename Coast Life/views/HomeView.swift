@@ -14,8 +14,11 @@ struct HomeView: View {
                     TitleBar()
 
                     VStack(alignment: .leading, spacing: 12) {
-                        Text("Entertainment Content")
-                            .font(.title)
+                        Text("    Entertainment Content")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal)
 
                         // YouTube — keep 16:9 and expand to available width up to readableMax
                         if let id = viewModel.videoID {
