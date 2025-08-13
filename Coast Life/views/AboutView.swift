@@ -12,7 +12,8 @@ struct AboutView: View {
 
     private let links: [(title: String, url: String, symbol: String)] = [
         ("Instagram", "https://instagram.com/coastlifellc", "camera"),
-        ("Facebook",  "https://www.facebook.com/share/1J7PS9GhRr/?mibextid=wwXIfr", "globe"),
+        ("Facebook", "https://www.facebook.com/share/1J7PS9GhRr/?mibextid=wwXIfr", "f.cursive.circle"),
+
         ("YouTube",   "http://youtube.com/@thecoastlife", "play.rectangle"),
         ("LinkedIn",  "https://www.linkedin.com/company/coast-life", "link.circle"),
         ("X",         "https://x.com/coastlifellc", "xmark.circle") // neutral fallback
@@ -25,9 +26,7 @@ struct AboutView: View {
 
                 // Social links (now buttons -> in-app Safari)
                 VStack(spacing: 8) {
-                    Text("Follow us:")
-                        .font(.headline)
-
+                  
                     HStack(spacing: 24) {
                         ForEach(links, id: \.title) { item in
                             Button {
@@ -54,24 +53,31 @@ struct AboutView: View {
                 .padding(.top, 4)
 
                 // Headline + blurb
-                Text("COAST LIFE™️ Entertainment Experiences")
-                    .font(.title)
+                Text("Entertainment Experiences")
+                    .font(.title2)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal)
 
-                Text("Putting Families, Friends, and Executives on the water! Enjoy live events, vacations, and recreational activities through our Apple iOS app or on our social media channels.")
+                Text("Putting Families, Friends, and Executives on the water! Enjoy live events,experience, and recreational activities through our Apple iOS app or on our social media channels.")
                     .font(.title2)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal)
 
                 // Art & Toys
+                Button {
+                    showForm = true
+                } label: {
+                    Text("Request Art & Toys")
+                        .font(.body)
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                }
                 VStack(alignment: .leading, spacing: 12) {
-                    Text("Art & Toys")
-                        .font(.title)
-                        .bold()
-                        .padding(.top)
-
+                   
                     Label("ART Work by World Renowned artist Barbara Craig", systemImage: "paintpalette")
                     Label("Custom 3D printed items and toys", systemImage: "cube.transparent")
 
@@ -90,17 +96,7 @@ struct AboutView: View {
                     }
                     .padding(.horizontal, 24)
 
-                    Button {
-                        showForm = true
-                    } label: {
-                        Text("Request Art & Toys")
-                            .font(.body)
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.blue)
-                            .cornerRadius(10)
-                    }
+                  
                     .padding(.top, 4)
                 }
                 .padding(.horizontal)

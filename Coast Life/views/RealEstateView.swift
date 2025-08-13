@@ -94,7 +94,7 @@ struct RealEstateView: View {
         VStack(spacing: 0) {
             TitleBar()
 
-            Text("COAST LIFE™ Real Estate Experiences")
+            Text("Commercial & Residential Real Estate")
                 .font(.title2.bold())
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
