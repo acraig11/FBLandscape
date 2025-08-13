@@ -3,37 +3,46 @@ import SwiftUI
 struct HomeView: View {
     @StateObject private var viewModel = VideoViewModel()
     @StateObject private var viewModel2 = InstagramViewModel()
-    
+
+    // A "readable" max width so videos don't go ultra-wide on iPad
+    private let readableMax: CGFloat = 820
+
     var body: some View {
         NavigationStack {
-            VStack(spacing: 0) { // ✅ Keeps scroll content + button stacked vertically
-                ScrollView {
-                    VStack(spacing: 20) {
-                        TitleBar()
+            ScrollView {
+                VStack(spacing: 20) {
+                    TitleBar()
 
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text("Entertainment Videos")
-                                .font(.headline)
-                                .padding(.leading)
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("Entertainment Videos")
+                            .font(.headline)
 
-                            if let url1 = viewModel.videoID {
-                                YouTubePlayerView(videoID: url1)
-                                    .frame(height: 200)
-                            }
-
-                            if let url = viewModel2.postURL {
-                                InstagramWebView(urlString: url)
-                                    .frame(height: 300)
-                            } else {
-                                Text("Loading Instagram post...")
-                            }
+                        // YouTube — keep 16:9 and expand to available width up to readableMax
+                        if let id = viewModel.videoID {
+                            YouTubePlayerView(videoID: id)
+                                .aspectRatio(16.0/9.0, contentMode: .fit)
+                                .frame(maxWidth: readableMax)     // prevent over-wide iPad
+                                .frame(maxWidth: .infinity)       // center within column
                         }
-                        .padding(.horizontal)
-                    }
-                    .padding(.top, 12)
-                }
 
-                // ✅ Button stays outside scroll view
+                        // Instagram — many posts are 1:1 or 4:5; use a flexible box
+                        if let url = viewModel2.postURL {
+                            InstagramWebView(urlString: url)
+                                .frame(maxWidth: readableMax)
+                                .frame(maxWidth: .infinity)
+                                .aspectRatio(1.0, contentMode: .fit) // start square…
+                                .fixedSize(horizontal: false, vertical: true)
+                        } else {
+                            Text("Loading Instagram post…")
+                        }
+                    }
+                    .padding(.horizontal)
+                }
+                .padding(.top, 12)
+                .frame(maxWidth: .infinity)
+            }
+            // Pin the button safely above the home indicator
+            .safeAreaInset(edge: .bottom) {
                 NavigationLink(destination: BookingView()) {
                     Text("Book an Experience")
                         .font(.headline)
@@ -41,11 +50,11 @@ struct HomeView: View {
                         .frame(maxWidth: .infinity)
                         .padding()
                         .background(Color.blue)
-                        .cornerRadius(10)
+                        .cornerRadius(12)
                         .padding(.horizontal)
-                        .padding(.vertical, 8)
+                        .padding(.top, 8)
                 }
-                .background(Color(UIColor.systemBackground))
+                .background(.ultraThinMaterial) // avoids overlapping content
             }
             .onAppear {
                 viewModel.fetchVideoID()

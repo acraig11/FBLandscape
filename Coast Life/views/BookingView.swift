@@ -36,13 +36,9 @@ struct BookingView: View {
                 TitleBar()
 
                 VStack(spacing: 16) {
-                    Image(systemName: "airplane")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 40)
-                        .foregroundColor(.blue)
+                    
 
-                    Text("Vacation Experiences")
+                    Text("Vacation Entertainment")
                         .font(.title)
                         .bold()
 
@@ -84,7 +80,7 @@ struct BookingView: View {
                             showCalendarSheet = true
                         }
                     }) {
-                        Text("Book Selected Items")
+                        Text("Book Selected Experiences")
                             .font(.headline)
                             .foregroundColor(.white)
                             .padding()

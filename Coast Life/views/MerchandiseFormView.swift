@@ -44,7 +44,7 @@ struct MerchandiseFormView: View {
                     .disabled(name.isEmpty || phone.isEmpty || email.isEmpty)
                 }
             }
-            .navigationTitle("Request Merchandise")
+            .navigationTitle("Request Art & Toys")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
@@ -55,7 +55,7 @@ struct MerchandiseFormView: View {
             }
             .sheet(isPresented: $showMailView, onDismiss: handleMailDismiss) {
                 MailView(
-                    subject: "Merchandise Request",
+                    subject: "Art & Toys Request",
                     body: formattedEmailBody(),
                     recipients: ["coastlifellc@gmail.com"],
                     resultHandler: { result in

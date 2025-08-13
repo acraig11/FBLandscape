@@ -21,20 +21,26 @@ struct ContentView: View {
                 }
             
             
-            MerchandiseView()
-                .tabItem {
-                    Label("Merchandise", systemImage: "storefront.circle.fill")
-                }
+           // MerchandiseView()
+               // .tabItem {
+                //    Label("Merchandise", systemImage: "storefront.circle.fill")
+               // }
             
             BookingView()
                 .tabItem {
-                    Label("Booking", systemImage: "calendar.circle.fill")
+                    Label("Experiences", systemImage: "calendar.circle.fill")
                 }
           
            PartnerView()
                 .tabItem {
                     Label("Partner", systemImage: "person.2.circle")
                 }
+            RealEstateView()
+                 .tabItem {
+                     Label("Real Estate", systemImage: "house.circle")
+                 }
+            
+            
         }
     }
 }
