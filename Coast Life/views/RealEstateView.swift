@@ -10,9 +10,9 @@ final class WebViewStore: ObservableObject {
     var webView: WKWebView?
 }
 
-// MARK: - SwiftUI wrapper for WKWebView
+// MARK: - SwiftUI wrapper for WKWebView (loads HTML)
 struct WebView: UIViewRepresentable {
-    let url: URL
+    let html: String
     @ObservedObject var store: WebViewStore
 
     func makeCoordinator() -> Coordinator { Coordinator(store: store) }
@@ -27,18 +27,16 @@ struct WebView: UIViewRepresentable {
         webView.allowsBackForwardNavigationGestures = true
         webView.scrollView.contentInsetAdjustmentBehavior = .never
 
-        // Pull to refresh
-        let rc = UIRefreshControl()
-        rc.addTarget(context.coordinator, action: #selector(Coordinator.handleRefresh(_:)), for: .valueChanged)
-        webView.scrollView.refreshControl = rc
-
         // Observe progress & nav state
         webView.addObserver(context.coordinator, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
         webView.addObserver(context.coordinator, forKeyPath: #keyPath(WKWebView.canGoBack), options: .new, context: nil)
         webView.addObserver(context.coordinator, forKeyPath: #keyPath(WKWebView.canGoForward), options: .new, context: nil)
 
         store.webView = webView
-        webView.load(URLRequest(url: url))
+
+        // Load the HTML with your iframe
+        webView.loadHTMLString(html, baseURL: nil)
+
         return webView
     }
 
@@ -64,17 +62,6 @@ struct WebView: UIViewRepresentable {
             }
         }
 
-        // Open target="_blank" in same view
-        func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction,
-                     decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-            if navigationAction.targetFrame == nil {
-                webView.load(navigationAction.request)
-                decisionHandler(.cancel)
-            } else {
-                decisionHandler(.allow)
-            }
-        }
-
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
             webView.scrollView.refreshControl?.endRefreshing()
         }
@@ -87,7 +74,26 @@ struct WebView: UIViewRepresentable {
 
 // MARK: - Your view
 struct RealEstateView: View {
-    private let idxURL = URL(string: "https://stellar.mlsmatrix.com/Matrix/public/IDX.aspx?idx=fd456ff8")!
+    // ⬇️ Your exact iframe snippet wrapped in HTML
+    private let iframeHTML = """
+    <!doctype html>
+    <html>
+    <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+      <style>
+        html, body { margin: 0; padding: 0; height: 100%; }
+        iframe { border: 0; width: 100%; height: 100%; display: block; }
+      </style>
+    </head>
+    <body>
+      <iframe src="https://stellar.mlsmatrix.com/Matrix/public/IDX.aspx?idx=fd456ff8"
+              width="100%" height="50%" frameborder="0"
+              marginwidth="0" marginheight="0">
+      </iframe>
+    </body>
+    </html>
+    """
+
     @StateObject private var web = WebViewStore()
 
     var body: some View {
@@ -99,18 +105,20 @@ struct RealEstateView: View {
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
                 .padding(.vertical, 8)
+
             Text("Buy or sell your next property. Use this map to view existing listings.")
-                
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
                 .padding(.vertical, 8)
+
             if web.progress < 1.0 {
                 ProgressView(value: web.progress)
                     .progressViewStyle(.linear)
                     .padding(.horizontal)
             }
 
-            WebView(url: idxURL, store: web)
+            // Load your iframe HTML
+            WebView(html: iframeHTML, store: web)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
 
             // Toolbar
