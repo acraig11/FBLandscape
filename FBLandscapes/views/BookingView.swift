@@ -6,7 +6,7 @@ struct BookingView: View {
     @State private var selectedDates: Set<Date> = []
     @State private var showCalendarSheet = false
     @State private var showMailView = false
-
+   
     @State private var selections: [String: Bool] = [
         "Lawn Care & Maint.": false,
         "Landscape Design": false,
@@ -30,7 +30,7 @@ struct BookingView: View {
     @State private var name = ""
     @State private var phoneNumber = ""
     @State private var location = ""
-
+    @State private var attachedImages: [UIImage] = []
     private var selectedIDs: [String] {
         selections.filter { $0.value }.map { $0.key }
     }
@@ -112,17 +112,29 @@ struct BookingView: View {
                 location: $location,
                 name: $name,
                 phoneNumber: $phoneNumber,
+                attachedImages: $attachedImages,
                 selectedItems: selections.filter { $0.value }.map { $0.key },
                 onConfirm: handleBooking,
                 onCancel: handleCalendarCancel
             )
         }
-        .sheet(isPresented: $showMailView, onDismiss: handleMailDismiss) {
+        .sheet(isPresented: $showMailView) {
             MailView(
-                subject: "Booking Request",
-                body: emailBody,
-                recipients: ["FlaglerBeachLandcapes@gmail.com"],
-                resultHandler: handleMailResult
+                subject: "Booking Request from \(name)",
+                body: """
+                      Name: \(name)
+                      Phone: \(phoneNumber)
+                      Location: \(location)
+                      Dates:
+                      \(selectedDates.sorted().map {
+                          DateFormatter.localizedString(from: $0, dateStyle: .long, timeStyle: .none)
+                      }.joined(separator: "\n"))
+                      """,
+                recipients: ["bookings@coastlife.example"],
+                images: attachedImages,                  // 👈 make sure this is non-empty
+                resultHandler: { result in
+                    print("Mail result:", result.rawValue)
+                }
             )
         }
     }
