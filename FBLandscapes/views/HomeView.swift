@@ -11,11 +11,11 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(spacing: 20) {
+                VStack(spacing: 0) {
                     TitleBar()
-
-                    VStack(alignment: .center, spacing: 12) {
-                        Text("Hard at work")
+                        .padding(.bottom,5)
+                    VStack(alignment: .center, spacing: 1) {
+                    Text("Hard at work")
                             .font(.title2)
                             .fontWeight(.bold)
                             .multilineTextAlignment(.center)
