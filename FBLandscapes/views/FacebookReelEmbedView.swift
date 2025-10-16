@@ -15,41 +15,32 @@ struct FacebookReelEmbedView: UIViewRepresentable {
     func makeUIView(context: Context) -> WKWebView {
         let config = WKWebViewConfiguration()
         config.allowsInlineMediaPlayback = true
-        if #available(iOS 16.4, *) {
-            config.mediaTypesRequiringUserActionForPlayback = []
-        }
-
         let webView = WKWebView(frame: .zero, configuration: config)
-        webView.scrollView.isScrollEnabled = false
-        webView.backgroundColor = .clear
         webView.isOpaque = false
+        webView.backgroundColor = .clear
+        webView.scrollView.isScrollEnabled = false
         return webView
     }
 
-    func updateUIView(_ webView: WKWebView, context: Context) {
-        // Wrap the iframe in basic HTML to make sure it scales correctly
-        let html = """
+    func updateUIView(_ uiView: WKWebView, context: Context) {
+        let wrapped = """
+        <!doctype html>
         <html>
-          <head>
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <style>
-              body {
-                margin: 0;
-                padding: 0;
-                background-color: transparent;
-              }
-              iframe {
-                border: none;
-                width: 100%;
-                height: 100%;
-              }
-            </style>
-          </head>
-          <body>
+        <head>
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <style>
+            html,body { margin:0; padding:0; background:transparent; }
+            .container { display:flex; justify-content:center; }
+            .container iframe { width:100%; max-width:100%; display:block; }
+          </style>
+        </head>
+        <body>
+          <div class="container">
             \(iframeHTML)
-          </body>
+          </div>
+        </body>
         </html>
         """
-        webView.loadHTMLString(html, baseURL: nil)
+        uiView.loadHTMLString(wrapped, baseURL: nil)
     }
 }
