@@ -31,7 +31,7 @@ struct FacebookReelEmbedView: UIViewRepresentable {
           <style>
             html,body { margin:0; padding:0; background:transparent; }
             .container { display:flex; justify-content:center; }
-            .container iframe { width:100%; max-width:100%; display:block; }
+            .container iframe { width:70%; max-width:100%; display:block; }
           </style>
         </head>
         <body>
