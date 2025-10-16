@@ -108,7 +108,7 @@ struct HomeView: View {
                         .padding(.horizontal)
                         .padding(.top, 8)
                 }
-                .background(.ultraThinMaterial)
+                .background(Color(.systemBackground))
             }
             .onAppear {
                 viewModel.fetchVideoID()
