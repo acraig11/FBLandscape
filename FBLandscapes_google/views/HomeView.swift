@@ -57,8 +57,8 @@ struct HomeView: View {
                 }
             }
             .onAppear {
-                viewModel.fetchVideoID()
-                viewModel3.fetchVideoID()
+               // viewModel.fetchVideoID()
+               // viewModel3.fetchVideoID()
                 fbViewModel.fetchIframeHTML()
             }
         }

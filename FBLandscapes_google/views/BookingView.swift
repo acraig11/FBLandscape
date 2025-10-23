@@ -75,7 +75,7 @@ struct BookingView: View {
                         Button(action: {
                             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
                                                             to: nil, from: nil, for: nil)
-                            if selections.values.contains(true)  {
+                            if (selections.values.contains(true) && !location.isEmpty) {
                                 showCalendarSheet = true
                             }
                         }) {
