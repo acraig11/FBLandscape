@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		A3D68F972E394F2D006DFD21 /* FBLandscapes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FBLandscapes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3D68F972E394F2D006DFD21 /* FBLandscapes_google.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FBLandscapes_google.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		A3D68F992E394F2D006DFD21 /* FBLandscapes */ = {
+		A3D68F992E394F2D006DFD21 /* FBLandscapes_google */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = FBLandscapes;
+			path = FBLandscapes_google;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -32,7 +32,7 @@
 		A3D68F8E2E394F2D006DFD21 = {
 			isa = PBXGroup;
 			children = (
-				A3D68F992E394F2D006DFD21 /* FBLandscapes */,
+				A3D68F992E394F2D006DFD21 /* FBLandscapes_google */,
 				A3D68F982E394F2D006DFD21 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -40,7 +40,7 @@
 		A3D68F982E394F2D006DFD21 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A3D68F972E394F2D006DFD21 /* FBLandscapes.app */,
+				A3D68F972E394F2D006DFD21 /* FBLandscapes_google.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,9 +48,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A3D68F962E394F2D006DFD21 /* FBLandscapes */ = {
+		A3D68F962E394F2D006DFD21 /* FBLandscapes_google */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A3D68FA22E394F2F006DFD21 /* Build configuration list for PBXNativeTarget "FBLandscapes" */;
+			buildConfigurationList = A3D68FA22E394F2F006DFD21 /* Build configuration list for PBXNativeTarget "FBLandscapes_google" */;
 			buildPhases = (
 				A3D68F932E394F2D006DFD21 /* Sources */,
 				A3D68F942E394F2D006DFD21 /* Frameworks */,
@@ -61,13 +61,13 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				A3D68F992E394F2D006DFD21 /* FBLandscapes */,
+				A3D68F992E394F2D006DFD21 /* FBLandscapes_google */,
 			);
-			name = FBLandscapes;
+			name = FBLandscapes_google;
 			packageProductDependencies = (
 			);
 			productName = "Coast Life";
-			productReference = A3D68F972E394F2D006DFD21 /* FBLandscapes.app */;
+			productReference = A3D68F972E394F2D006DFD21 /* FBLandscapes_google.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -85,7 +85,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A3D68F922E394F2D006DFD21 /* Build configuration list for PBXProject "FBLandscapes" */;
+			buildConfigurationList = A3D68F922E394F2D006DFD21 /* Build configuration list for PBXProject "FBLandscapes_google" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -99,7 +99,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A3D68F962E394F2D006DFD21 /* FBLandscapes */,
+				A3D68F962E394F2D006DFD21 /* FBLandscapes_google */,
 			);
 		};
 /* End PBXProject section */
@@ -253,7 +253,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 9ZER77ZQVA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -269,6 +269,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.1;
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = alancraig.FBLandscapes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -285,7 +286,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 9ZER77ZQVA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -301,6 +302,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.1;
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = alancraig.FBLandscapes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -313,7 +315,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A3D68F922E394F2D006DFD21 /* Build configuration list for PBXProject "FBLandscapes" */ = {
+		A3D68F922E394F2D006DFD21 /* Build configuration list for PBXProject "FBLandscapes_google" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A3D68FA02E394F2F006DFD21 /* Debug */,
@@ -322,7 +324,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A3D68FA22E394F2F006DFD21 /* Build configuration list for PBXNativeTarget "FBLandscapes" */ = {
+		A3D68FA22E394F2F006DFD21 /* Build configuration list for PBXNativeTarget "FBLandscapes_google" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A3D68FA32E394F2F006DFD21 /* Debug */,

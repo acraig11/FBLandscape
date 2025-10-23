@@ -107,7 +107,7 @@ struct BookingView: View {
             }
         }
         .sheet(isPresented: $showCalendarSheet) {
-            BookingCalendarSheet(
+            GoogleCalendarSheet(
                 selectedDates: $selectedDates,
                 location: $location,
                 name: $name,

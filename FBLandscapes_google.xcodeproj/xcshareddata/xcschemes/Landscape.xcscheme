@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A3D68F962E394F2D006DFD21"
-               BuildableName = "FBLandscapes.app"
-               BlueprintName = "FBLandscapes"
-               ReferencedContainer = "container:FBLandscapes.xcodeproj">
+               BuildableName = "FBLandscapes_google.app"
+               BlueprintName = "FBLandscapes_google"
+               ReferencedContainer = "container:FBLandscapes_google.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A3D68F962E394F2D006DFD21"
-            BuildableName = "FBLandscapes.app"
-            BlueprintName = "FBLandscapes"
-            ReferencedContainer = "container:FBLandscapes.xcodeproj">
+            BuildableName = "FBLandscapes_google.app"
+            BlueprintName = "FBLandscapes_google"
+            ReferencedContainer = "container:FBLandscapes_google.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A3D68F962E394F2D006DFD21"
-            BuildableName = "FBLandscapes.app"
-            BlueprintName = "FBLandscapes"
-            ReferencedContainer = "container:FBLandscapes.xcodeproj">
+            BuildableName = "FBLandscapes_google.app"
+            BlueprintName = "FBLandscapes_google"
+            ReferencedContainer = "container:FBLandscapes_google.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

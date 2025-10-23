@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict/>
+<dict>
+	<key>GAPI_KEY</key>
+	<string>AIzaSyBjTWzvEKb9ONUub8rSytU1epK1pP1GnMw</string>
+	<key>GCAL_ID</key>
+	<string>5d7990cc15f0e4ee02fbcd77e2ea825b40627f3364e7c64f862e49c3117cdefc@group.calendar.google.com</string>
+</dict>
 </plist>
